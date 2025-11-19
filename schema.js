@@ -8,7 +8,7 @@ module.exports.listingSchema = Joi.object({
     country: Joi.string().required(),
     price: Joi.number().required().min(0), 
 
-    // ✅ FIXED: image must be an object, not a string
+    //  FIXED: image must be an object, not a string
     image: Joi.object({
       url: Joi.string().allow("", null),
       filename: Joi.string().allow("", null),
