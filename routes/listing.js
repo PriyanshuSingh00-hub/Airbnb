@@ -8,19 +8,23 @@ const {isLoggedin,isOwner,validateListing}=require("../middleware.js")
 const listingController = require("../controllers/listing.js")
 
 
-
-
 // See all listings
-router.get("/",wrapasync(listingController.index));
+// Create listing
+router
+.route("/")
+.get(wrapasync(listingController.index))
+.post(
+ isLoggedin,validateListing,
+  wrapasync(listingController.createListings)
+);
+
+
+
+
 
 // New Route
 router.get("/new", isLoggedin,listingController.renderNewForm);
 
-// Create listing
-router.post(
-  "/",isLoggedin,validateListing,
-  wrapasync(listingController.createListings)
-);
 
 // Show a listing
 router.get("/:id",wrapasync(listingController.showListings));
