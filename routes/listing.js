@@ -6,6 +6,8 @@ const {listingSchema } =require("../schema.js");
 const Listing = require("../models/listing.js");
 const {isLoggedin,isOwner,validateListing}=require("../middleware.js")
 const listingController = require("../controllers/listing.js")
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 
 // See all listings
