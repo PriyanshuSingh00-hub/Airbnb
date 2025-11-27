@@ -5,7 +5,10 @@
 
   <h3>Edit your Listing:</h3>
 
-  <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+  <form method="POST" 
+  action="/listings/<%= listing._id %>?_method=PUT" 
+  novalidate class="needs-validation"
+  enctype="multipart/form-data">
 
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
@@ -34,16 +37,15 @@
     </div>
 
     <div class="mb-3">
-      <label for="image" class="form-label">Image</label>
+      <label for="image" class="form-label">Upload new Image</label>
       <input
-        name="listing[image][url]"
-        value="<%= listing.image.url %>"
-        type="text"
+        name="image"
+        type="file"
         class="form-control"
         id="image"
-        required
+       
       />
-       <div class="invalid-feedback">You should upload a img</div>
+      
     </div>
 
 <div class="row">
@@ -95,6 +97,6 @@
 
     </div>
 </div>
- <script src ="/JS/script.js"></script>
+ <script src="/JS/script.js"></script>
 
 </html>

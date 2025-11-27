@@ -37,8 +37,9 @@ router.route("/:id")
 .put(
   isLoggedin,
   isOwner,
-    validateListing,
-    wrapasync(listingController.updateListings));
+  upload.single("image"),
+  validateListing,
+  wrapasync(listingController.updateListing));
 
 
 
