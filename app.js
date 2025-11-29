@@ -62,9 +62,9 @@ const sessionOptions = {
 
 
 // Home route
-app.get("/", (req, res) => {
-    res.send("hi, I'm working");
-});
+// app.get("/", (req, res) => {
+//     res.send("hi, I'm working");
+// });
 
 app.use(session(sessionOptions))
 app.use(flash());                  // used for session nd cookies
