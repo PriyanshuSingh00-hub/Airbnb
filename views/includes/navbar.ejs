@@ -34,10 +34,12 @@
       </div>
 
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="/listings" method="GET">
       <input class="form-control me-2  search-input" 
       type="search"
-       placeholder="Search Destination"/>
+      name="country"
+       placeholder="Search by country"
+       value="<%= typeof searchCountry !== 'undefined' ? searchCountry : '' %>"/>
       <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
     </form>
       </div>

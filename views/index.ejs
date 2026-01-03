@@ -42,8 +42,37 @@
 
     .tax-info{
          display: none;
-    }  
+    }
+    
+    .search-header {
+        padding: 1rem 3rem;
+        background-color: #f5f5f5;
+        margin-bottom: 1rem;
+    }
+    
+    .search-header h5 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    
+    .clear-search {
+        margin-left: 1rem;
+    }
+    
+    .no-results {
+        text-align: center;
+        padding: 3rem;
+        font-size: 1.1rem;
+    }
  </style>
+
+    <% if (searchCountry) { %>
+        <div class="search-header">
+            <h5>Results for "<%= searchCountry %>" (<%= allListings.length %> listings found)
+                <a href="/listings" class="btn btn-sm btn-secondary clear-search">Clear Search</a>
+            </h5>
+        </div>
+    <% } %>
 
     <div id="filters">
         <div class="filter">
@@ -96,23 +125,28 @@
 
     </div>
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-    <% for (listing of allListings) {%>
-        <a href="/listings/<%=listing._id%>" class="listing-link">
-    <div class="card listing-card index-card">
- 
-  <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;"/>
-   <div class="card-img-overlay">abcd</div>
-  <div class="card-body">
-    <p class="card-text">
-        <b><%=listing.title%><br></b>
-       &#8377; <%= (listing.price ? listing.price.toLocaleString("en-IN") : "N/A") %>/night
-      <span class="gst-text tax-info">+18% GST</span>
-
-
-    </p>
-  </div>
-</div>
- <%}%>
+    <% if (allListings.length > 0) { %>
+        <% for (listing of allListings) {%>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+        <div class="card listing-card index-card">
+     
+      <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;"/>
+       <div class="card-img-overlay">abcd</div>
+      <div class="card-body">
+        <p class="card-text">
+            <b><%=listing.title%><br></b>
+            <small class="text-muted"><%= listing.country %></small><br>
+           &#8377; <%= (listing.price ? listing.price.toLocaleString("en-IN") : "N/A") %>/night
+          <span class="gst-text tax-info">+18% GST</span>
+        </p>
+      </div>
+    </div>
+     <%}%>
+    <% } else { %>
+        <div class="no-results col-12">
+            <p>No listings found<% if (searchCountry) { %> for "<%= searchCountry %>"<% } %>. Try a different search!</p>
+        </div>
+    <% } %>
 
 </div>
 </a>
