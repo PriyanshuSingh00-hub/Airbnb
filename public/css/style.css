@@ -16,6 +16,11 @@ body{
     background-color: white;
 }
 
+.gst-text {
+    color: #6c757d;   /* Bootstrap muted gray */
+    font-size: 0.85rem;
+}
+
 .fa-compass{
     color: #fe424d;
     font-size: 2rem;

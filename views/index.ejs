@@ -28,7 +28,11 @@
     .filter p{
         font-size: 0.8rem;
     }
-   </style>
+
+    .tax-info{
+         display: none;
+    }  
+ </style>
 
     <div id="filters">
         <div class="filter">
@@ -82,9 +86,10 @@
   <div class="card-body">
     <p class="card-text">
         <b><%=listing.title%><br></b>
-       &#8377; <%= (listing.price ? listing.price.toLocaleString("en-IN") : "N/A") %><br>
+       &#8377; <%= (listing.price ? listing.price.toLocaleString("en-IN") : "N/A") %>/night
+      <span class="gst-text tax-info">+18% GST</span>
 
-    
+
     </p>
   </div>
 </div>
@@ -108,6 +113,14 @@
 <script>
     let taxSwitch= document.getElementById("switchCheckDefault")
     taxSwitch.addEventListener("click",()=>{
-        console.log("clicked")
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for (info of taxInfo) {
+    if (info.style.display != "inline") {
+        info.style.display = "inline";
+    } else {
+        info.style.display = "none";
+    }
+}
+
     })
 </script>
