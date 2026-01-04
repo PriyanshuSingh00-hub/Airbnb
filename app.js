@@ -14,7 +14,7 @@ const ExpressError = require("./utils/ExpressError");
 const Review = require("./models/reviews.js");
 
 const session =require("express-session");
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').default;
 const flash = require("connect-flash");
 const passport= require("passport");
 const LocalStrategy=require("passport-local");
@@ -98,12 +98,13 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-app.use((req,res,next) =>{
-  res.locals.success=req.flash("success") 
-   res.locals.error=req.flash("error") //key 
-   res.locals.currUser = req.user;
-next();
-})
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.currUser = req.user || null;
+  next();
+});
+
 
 
 
