@@ -14,6 +14,7 @@ const ExpressError = require("./utils/ExpressError");
 const Review = require("./models/reviews.js");
 
 const session =require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport= require("passport");
 const LocalStrategy=require("passport-local");
@@ -24,7 +25,8 @@ const listingsRouter = require("./routes/listing.js");   //listinggggg routersss
 const reviewRouter = require("./routes/review.js");
 const userRouter= require("./routes/userRouter.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl=process.env.ATLASDB_URL
 
 // -------------------------
 // Connect to MongoDB
@@ -33,7 +35,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 // -------------------------
