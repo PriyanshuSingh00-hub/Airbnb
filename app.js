@@ -51,13 +51,26 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 
 
+const store =MongoStore.create({
+  mongoUrl:dbUrl,
+  crypto:{
+    secret:"mysupersecretcode"
+  },
+  touchAfter:24*3600,
+})
+
+store.on("error",(err)=>{
+  console.log("ERROR IN MONGO SESSION STORE",err)
+})
+
 const sessionOptions = {
+  store,
   secret: "mysupersecretcode",
-  resave:"false",
+  resave:false,
   saveUninitialized:true,
   cookie :{
-    expires:Date.now() + 7 * 24 * 60 * 1000,
-    maxAge : 7 * 24 * 60 * 1000,
+    expires:Date.now() + 7 * 24 * 60 *60* 1000,
+    maxAge : 7 * 24 * 60 * 60* 1000,
 
   }
 }
@@ -67,6 +80,8 @@ const sessionOptions = {
 // app.get("/", (req, res) => {
 //     res.send("hi, I'm working");
 // });
+
+
 
 app.use(session(sessionOptions))
 app.use(flash());                  // used for session nd cookies
