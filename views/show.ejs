@@ -111,10 +111,14 @@
     <div id="map" style="height: 400px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"></div>
     
     <script>
-      function initializeMap() {
+      function initializeMap(retries = 0) {
         const sdk = window.maptilersdk;
         if (!sdk) {
-          setTimeout(initializeMap, 100); // Retry in 100ms
+          if (retries < 50) { // Max 5 seconds (50 × 100ms)
+            setTimeout(() => initializeMap(retries + 1), 100);
+          } else {
+            console.error("MapTiler SDK failed to load after 5 seconds");
+          }
           return;
         }
 
