@@ -115,7 +115,7 @@
     <script>
       // Pass data to map.js
       window.mapToken = "<%=process.env.MAP_TOKEN%>";
-      window.listingCoordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+      window.listingCoordinates = "<%- JSON.stringify(listing.geometry.coordinates) %>";
     </script>
 </div>
 <script src="/JS/map.js"></script>
