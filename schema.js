@@ -13,6 +13,12 @@ module.exports.listingSchema = Joi.object({
       url: Joi.string().allow("", null),
       filename: Joi.string().allow("", null),
     }).optional(),
+
+    // Geometry for map coordinates
+    geometry: Joi.object({
+      type: Joi.string().default('Point'),
+      coordinates: Joi.array().items(Joi.number()).length(2).default([77.2090, 28.6139])
+    }).optional(),
   }).required(),
 });
 

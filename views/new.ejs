@@ -71,13 +71,70 @@
           
          <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input name = "listing[location]" placeholder="enter location" type="text" class="form-control" required />
+            <div class="input-group">
+              <input 
+                id="locationInput"
+                name="listing[location]" 
+                placeholder="enter location (e.g., Times Square, Paris, Tokyo)" 
+                type="text" 
+                class="form-control" 
+                required 
+              />
+              <button 
+                class="btn btn-outline-secondary" 
+                type="button" 
+                id="searchLocationBtn"
+              >
+                Search
+              </button>
+            </div>
             <div class="invalid-feedback">Enter your location.</div>
+            <small class="form-text text-muted">Click "Search" to find the location and update map</small>
          </div>
-          
+
+         <!-- Hidden coordinate fields (auto-filled by geocoding) -->
+         <input type="hidden" id="latitudeInput" name="listing[geometry][coordinates][1]" value="28.6139" />
+         <input type="hidden" id="longitudeInput" name="listing[geometry][coordinates][0]" value="77.2090" />
+
+         <!-- Preview Map -->
+         <div class="mb-3">
+            <label class="form-label">Location Preview (Map)</label>
+            <div id="previewMap" style="height: 300px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"></div>
+         </div>
 
          <button class="btn btn-dark add-btn mt-3" >ADD!</button>
          <br><br><br>
+
+         <script src="/JS/geocoding.js"></script>
+         <script>
+           const mapToken = "<%=process.env.MAP_TOKEN%>";
+           const locationInput = document.getElementById('locationInput');
+           const searchBtn = document.getElementById('searchLocationBtn');
+
+           // Search on button click
+           searchBtn.addEventListener('click', async function(e) {
+             e.preventDefault();
+             console.log("Search button clicked");
+             await updateMapLocation(locationInput, mapToken, 'previewMap');
+           });
+
+           // Auto-search when leaving the field (blur)
+           locationInput.addEventListener('blur', async function() {
+             if (this.value.trim()) {
+               console.log("Auto-searching for location on blur");
+               await updateMapLocation(this, mapToken, 'previewMap');
+             }
+           });
+
+           // Search on Enter key
+           locationInput.addEventListener('keypress', async function(e) {
+             if (e.key === 'Enter') {
+               e.preventDefault();
+               console.log("Search triggered by Enter key");
+               await updateMapLocation(this, mapToken, 'previewMap');
+             }
+           });
+         </script>
          
     </form>
     </div>

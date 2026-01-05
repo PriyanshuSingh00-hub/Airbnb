@@ -1,5 +1,7 @@
 <% layout('layout/boilerplate') %>
-
+<script>
+  const mapToken ="<%=process.env.MAP_TOKEN%>"
+</script>
 <!-- Listing Title -->
 <div class="row mt-3">
     <div class="col-8 offset-3">
@@ -111,32 +113,9 @@
     <div id="map" style="height: 400px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"></div>
     
     <script>
-      function initializeMap(retries = 0) {
-        const sdk = window.maptilersdk;
-        if (!sdk) {
-          if (retries < 50) { // Max 5 seconds (50 × 100ms)
-            setTimeout(() => initializeMap(retries + 1), 100);
-          } else {
-            console.error("MapTiler SDK failed to load after 5 seconds");
-          }
-          return;
-        }
-
-        const apiKey = "<%=process.env.MAP_TOKEN%>";
-        const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
-
-        sdk.config.apiKey = apiKey;
-
-        const map = new sdk.Map({
-          container: "map",
-          style: sdk.MapStyle.AQUARELLE,
-          center: coordinates,
-          zoom: 10
-        });
-
-        new sdk.Marker().setLngLat(coordinates).addTo(map);
-      }
-
-      initializeMap();
+      // Pass data to map.js
+      window.mapToken = "<%=process.env.MAP_TOKEN%>";
+      window.listingCoordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
     </script>
 </div>
+<script src="/JS/map.js"></script>

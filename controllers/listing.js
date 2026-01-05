@@ -27,6 +27,7 @@ module.exports.showListings=async (req, res) => {
     req.flash("error", "Listing You Requested Does Not Exist!");
     return res.redirect("/listings");  
   }
+    console.log("Showing listing with geometry:", listing.geometry);
     res.render("show", { listing });
 }
 
@@ -37,11 +38,23 @@ module.exports.createListings =async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
     newListing.owner =req.user._id;
     newListing.image={url,filename}
-    // Set default coordinates (longitude, latitude)
-    newListing.geometry = {
-      type: "Point",
-      coordinates: [0, 0] // Default coordinates
-    };
+    
+    // Use coordinates from form if provided, otherwise use default
+    if (!newListing.geometry || !newListing.geometry.coordinates || 
+        (newListing.geometry.coordinates[0] === 0 && newListing.geometry.coordinates[1] === 0)) {
+      newListing.geometry = {
+        type: "Point",
+        coordinates: [77.2090, 28.6139] // Default: New Delhi [longitude, latitude]
+      };
+    } else {
+      // Ensure geometry has proper structure
+      newListing.geometry = {
+        type: "Point",
+        coordinates: newListing.geometry.coordinates
+      };
+    }
+    
+    console.log("Creating listing with geometry:", newListing.geometry);
     await newListing.save();
     req.flash("success","New Listing Created!")
     res.redirect("/listings");
