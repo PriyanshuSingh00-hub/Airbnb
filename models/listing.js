@@ -20,7 +20,17 @@ const listingSchema = new Schema({
 
   location: String,
   country: String,
-
+  geometry: {
+    type: {
+      type: String,
+      enum: ['Point'],
+      default: 'Point'
+    },
+    coordinates: {
+      type: [Number], // [longitude, latitude]
+      default: [0, 0]
+    }
+  },
 
   reviews: [
     {

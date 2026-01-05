@@ -122,3 +122,9 @@ body{
 .btns .btn {
     margin: 0 15px; 
 }
+
+/* map */
+#map { 
+    width: 500px;
+     height: 500px; 
+    }
