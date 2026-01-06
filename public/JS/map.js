@@ -1,7 +1,8 @@
 function initializeMap(retries = 0) {
   const sdk = window.maptilersdk;
+
   if (!sdk) {
-    if (retries < 50) { // Max 5 seconds (50 × 100ms)
+    if (retries < 50) {
       setTimeout(() => initializeMap(retries + 1), 100);
     } else {
       console.error("MapTiler SDK failed to load after 5 seconds");
@@ -9,25 +10,51 @@ function initializeMap(retries = 0) {
     return;
   }
 
-  // Get data from window object (passed from show.ejs)
-  const apiKey = window.mapToken || "";
-  const coordinates = window.listingCoordinates || [77.2090, 28.6139];
-  
-  // Default coordinates: New Delhi
-  const defaultCoordinates = [77.2090, 28.6139]; // [longitude, latitude]
-  // Use listing coordinates if available, otherwise use New Delhi
-  const mapCenter = (coordinates[0] !== 0 || coordinates[1] !== 0) ? coordinates : defaultCoordinates;
+  // Ensure map container exists
+  const container = document.getElementById("map");
+  if (!container) return;
 
+  const apiKey = window.mapToken || "";
   sdk.config.apiKey = apiKey;
+
+  const defaultCoordinates = [77.2090, 28.6139]; // New Delhi
+
+  let coordinates = window.listingCoordinates;
+
+  // 🔒 HARD SAFETY: parse string → array
+  if (typeof coordinates === "string") {
+    try {
+      coordinates = JSON.parse(coordinates);
+    } catch (e) {
+      console.warn("Failed to parse coordinates string:", coordinates);
+      coordinates = null;
+    }
+  }
+
+  // 🔒 HARD VALIDATION
+  if (
+    !Array.isArray(coordinates) ||
+    coordinates.length !== 2 ||
+    typeof coordinates[0] !== "number" ||
+    typeof coordinates[1] !== "number"
+  ) {
+    console.warn("Invalid listing coordinates, using default:", coordinates);
+    coordinates = defaultCoordinates;
+  }
 
   const map = new sdk.Map({
     container: "map",
     style: sdk.MapStyle.AQUARELLE,
-    center: mapCenter,
+    center: coordinates,
     zoom: 10
   });
 
-  new sdk.Marker().setLngLat(mapCenter).addTo(map);
+  new sdk.Marker()
+    .setLngLat(coordinates)
+    .addTo(map);
+
+  console.log("✓ Map initialized at:", coordinates);
 }
 
-initializeMap();
+// Initialize map on page load
+document.addEventListener("DOMContentLoaded", initializeMap);
