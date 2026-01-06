@@ -106,14 +106,14 @@
     <% } %>
 </div>
 
-<!-- Map Section -->
+<!-- Map Section. -->
 <div class="col-8 offset-3 mb-3 mt-4">
     <hr>
     <h3>Where you'll be</h3>
     <div id="map" style="height: 400px; width: 100%; border: 1px solid #ddd; border-radius: 4px;"></div>
     
     <script>
-      // Pass data to map.js
+      // Pass data to map.js.
       window.mapToken = "<%=process.env.MAP_TOKEN%>";
       window.listingCoordinates = "<%- JSON.stringify(listing.geometry.coordinates) %>";
     </script>
