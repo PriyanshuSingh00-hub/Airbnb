@@ -51,3 +51,9 @@ The project demonstrates real-world backend integration, authentication, cloud d
 ```bash
 git clone https://github.com/PriyanshuSingh00-hub/Airbnb.git
 cd Airbnb
+
+### 2️⃣ Install dependencies
+```bash
+npm init -y
+npm install express ejs mongoose ejs-mate express-session connect-mongo connect-flash passport joi
+
