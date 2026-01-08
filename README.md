@@ -98,9 +98,11 @@ http://localhost:8080/listings
 - Integrated maps for location-based features
 - Deployed a full-stack application on Render
 - Gained hands-on experience with MVC architecture
+---
 
 ### Author
--Priyanshu Singh.
+- 🦇Priyanshu Singh.
+  
 
 
 
