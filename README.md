@@ -83,8 +83,24 @@ http://localhost:8080/listings
 ![Map](https://github.com/user-attachments/assets/0618f2a8-bd1e-49f9-8272-44cee3e899b4)
 
 ### Add Listing
-![Add Listing](https://github.com/user-attachments/assets/78131365-5a2c-4728-991d-7dca7620b73b)
+![Add Listing](https://github.com/user-attachments/assets/069a15c7-5ad9-400f-8582-ede8eee02aed)
 
+---
+## 🚀 Deployment
+- Hosting: Render
+- Database: MongoDB Atlas
+- Cloud-ready with secure environment variables
+---
+
+### 📚 Learning Outcomes
+- Implemented authentication using Passport.js
+- Worked with MongoDB Atlas for cloud data storage
+- Integrated maps for location-based features
+- Deployed a full-stack application on Render
+- Gained hands-on experience with MVC architecture
+
+### Author
+-Priyanshu Singh.
 
 
 
