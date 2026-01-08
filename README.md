@@ -1,4 +1,4 @@
-# 🏡 Airbnb Clone – Hotel Listing Platform
+# 🏡 Airbnb – Hotel Listing Platform
 
 🌐 **Live Demo:**  
 https://majorproject-1-9p07.onrender.com/listings
