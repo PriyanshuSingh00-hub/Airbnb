@@ -65,6 +65,8 @@ node app.js
 Visit the app at:
 http://localhost:8080/listings
 
+---
+
 ##📸 Screenshots
 ![Home Page](<img width="1880" height="1085" alt="{00444C2E-CD7A-46BD-89CD-11D436D24547}" src="https://github.com/user-attachments/assets/f7f18d96-1528-4dea-8442-df1216dbd093" />
 )
