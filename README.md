@@ -57,8 +57,8 @@ npm init -y
 npm install express ejs mongoose ejs-mate express-session connect-mongo connect-flash passport joi
 
 ### 3️⃣ Set environment variables
-MONGODB_URI=your_mongodb_atlas_connection_string
-SESSION_SECRET=your_secret_key
+- MONGODB_URI=your_mongodb_atlas_connection_string
+- SESSION_SECRET=your_secret_key
 
 ### 4️⃣ Start the server
 node app.js
