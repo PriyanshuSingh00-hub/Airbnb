@@ -67,7 +67,8 @@ http://localhost:8080/listings
 
 ---
 
-##📸 Screenshots
+## 📸 Screenshots
+
 ![Home Page](<img width="1880" height="1085" alt="{00444C2E-CD7A-46BD-89CD-11D436D24547}" src="https://github.com/user-attachments/assets/f7f18d96-1528-4dea-8442-df1216dbd093" />
 )
 ![SignUP Page](<img width="1789" height="985" alt="{6DF08514-E74D-479C-9DE9-F0B7BAEDBCB3}" src="https://github.com/user-attachments/assets/2a8bcea4-62a1-4990-8827-1e1699ea0f78" />
@@ -76,6 +77,9 @@ http://localhost:8080/listings
 )
 ![Reviews & map](<img width="1829" height="928" alt="{7F117342-431B-4D6F-B7B8-206CEEF43C00}" src="https://github.com/user-attachments/assets/d85e2f87-3324-4d59-bc6c-3efbf8b42704" />,<img width="1575" height="814" alt="{6EA5499C-173D-4CFA-94CC-EA09AC716F2F}" src="https://github.com/user-attachments/assets/0618f2a8-bd1e-49f9-8272-44cee3e899b4" />
 )
+![Add Listing](<img width="1353" height="965" alt="{57672EE1-AB43-42D0-8826-575E89310514}" src="https://github.com/user-attachments/assets/78131365-5a2c-4728-991d-7dca7620b73b" />
+)
+
 
 
 
