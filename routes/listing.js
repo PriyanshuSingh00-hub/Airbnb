@@ -11,7 +11,7 @@ const {storage} = require("../cloudconfig.js")
 const upload = multer({ storage })
 
 
-// See all listings
+// See all listings.
 // Create listing.
 router
 .route("/")
