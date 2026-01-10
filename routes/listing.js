@@ -12,7 +12,7 @@ const upload = multer({ storage })
 
 
 // See all listings
-// Create listing
+// Create listing.
 router
 .route("/")
 .get(wrapasync(listingController.index))
