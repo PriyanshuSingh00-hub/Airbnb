@@ -10,14 +10,14 @@ const reviewController = require("../controllers/review.js")
 
 
 
-// Create Review Route
+// Create Review Route.
 router.post(
   "/",
   isLoggedin,
   validateReview,
   wrapasync(reviewController.createReview)
 );
-// Delete Review Route
+// Delete Review Route.
 router.delete(
   "/:reviewId",
   isLoggedin,
