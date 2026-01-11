@@ -10,7 +10,7 @@ const reviewController = require("../controllers/review.js")
 
 
 
-// Create Review Route.
+// Create Review Route
 router.post(
   "/",
   isLoggedin,
