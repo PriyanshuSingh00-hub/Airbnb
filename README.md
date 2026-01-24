@@ -8,7 +8,7 @@ https://majorproject-1-9p07.onrender.com/listings
 ## 📌 Project Description
 This is a full-stack **Airbnb-style hotel listing platform** where users can explore different hotels, view their locations on a map, and share ratings based on their experience. Authenticated users can add new hotel listings and manage existing ones.
 
-The project demonstrates real-world backend integration, authentication, cloud database usage, and deployment.
+The project demonstrates real-world backend integration, authentication, cloud database usage, and deployment
 
 ---
 
