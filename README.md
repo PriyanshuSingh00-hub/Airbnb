@@ -94,7 +94,7 @@ http://localhost:8080/listings
 
 ### 📚 Learning Outcomes
 - Implemented authentication using Passport.js
-- Worked with MongoDB Atlas for cloud data storage
+- Worked with MongoDB Atlas for cloud data storage.
 - Integrated maps for location-based features
 - Deployed a full-stack application on Render
 - Gained hands-on experience with MVC architecture
