@@ -19,7 +19,7 @@ The project demonstrates real-world backend integration, authentication, cloud d
 - Interactive map to view hotel locations.
 - Create, edit, and manage hotel listings.
 - Secure session management.
-- Fully deployed on Render
+- Fully deployed on Render.
 
 ---
 
