@@ -31,7 +31,7 @@ module.exports.signup=async (req, res) => {
   module.exports.login=async (req, res) => {
     req.flash("success", "Welcome to Wanderlust! You are logged in!");
     let redirectUrl=res.locals.redirectUrl ||"listings";
-    res.redirect(redirectUrl); // You might want to redirect somewhere after login
+    res.redirect(redirectUrl); // You might want to redirect somewhere after login.
   }
 
   module.exports.logout= (req, res, next) => {
